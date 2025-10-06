@@ -1,0 +1,128 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  z-index: 2;
+  overflow: hidden;
+  position: relative;
+  background-color: #0f0d0f;
+
+  transition: transform 2s ease-in-out;
+}
+
+.menu.slide-up {
+  transform: translateY(-100%);
+}
+
+.title {
+  font-size: 4rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 2rem;
+  z-index: 2;
+}
+
+.letter {
+  display: inline-block;
+  transform: scale(0.5);
+  opacity: 0;
+  animation: appearZoom 2.5s forwards;
+  z-index: 2;
+}
+
+@keyframes appearZoom {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 0.8rem 2rem;
+  background: none;
+  border: 2px solid white;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 2;
+}
+
+button:hover {
+  background: white;
+  color: black;
+}
+
+.smoke-layer {
+  position: absolute;
+  top: -10%;
+  left: -35%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255, 0.05) 0%, rgba(0,0,0,0.8) 80%);
+  animation: smokeMove 20s linear infinite;
+  z-index: 1;
+}
+
+@keyframes smokeMove {
+  0% { transform: translate(0,0) scale(2); opacity: 0.3; }
+  50% { transform: translate(20%, 10%) scale(2.5); opacity: 0.5; }
+  100% { transform: translate(0,0) scale(2); opacity: 0.3; }
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.particle {
+    opacity: 0;
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    animation: floatParticle 10s linear infinite;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.particles .particle:nth-child(odd) { animation-delay: 0s; left: 20%; top: 35% }
+.particles .particle:nth-child(2n) { animation-delay: 5s; left: 40%; top: 55% }
+.particles .particle:nth-child(3n) { animation-delay: 1s; left: 60%; top: 27% }
+.particles .particle:nth-child(4n) { animation-delay: 3s; left: 80%; top: 67%}
+
+@keyframes floatParticle {
+  0% { transform: translateY(5%) scale(0.7); opacity: 0; }
+  30% { opacity: 0.3; }
+  70% { opacity: 0.5; }
+  100% { transform: translateY(-10%) scale(1.5); opacity: 0; }
+}
+
+.music-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: 0.3s;
+  z-index: 100;
+}
+
+.music-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
